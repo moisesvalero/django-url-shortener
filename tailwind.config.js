@@ -9,10 +9,6 @@ module.exports = {
         sans: ["Space Grotesk", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
-      colors: {
-        black: "#0A0A0A",
-        lime: "#C6FF00",
-      },
     },
   },
   plugins: [],

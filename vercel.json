@@ -1,18 +1,18 @@
 {
-  "buildCommand": "pnpm install && pnpm run build:css",
   "builds": [
     {
       "src": "acortador/wsgi.py",
       "use": "@vercel/python",
       "config": {
-        "maxLambdaSize": "15mb"
+        "maxLambdaSize": "15mb",
+        "includeFiles": "public/**"
       }
     }
   ],
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/public/static/$1"
+      "dest": "acortador/wsgi.py"
     },
     {
       "src": "/(.*)",

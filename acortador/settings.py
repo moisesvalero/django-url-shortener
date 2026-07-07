@@ -38,6 +38,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -87,11 +88,8 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "static" / "dist"]
+STATICFILES_DIRS = [BASE_DIR / "public" / "static"]
 if not os.environ.get("VERCEL"):
-    # En Vercel los estáticos los sirve Vercel directamente desde
-    # public/static/ (configurado en vercel.json). STATIC_ROOT solo
-    # es necesario en dev para `collectstatic`.
     STATIC_ROOT = BASE_DIR / "staticfiles"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
