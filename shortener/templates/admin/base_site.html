@@ -1,0 +1,20 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} · acortador{% endblock %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'output.css' %}">
+{% endblock %}
+
+{% block bodyclass %}acortador-admin{% endblock %}
+
+{% block branding %}
+  <a href="{% url 'admin:index' %}" class="acortador-brand">
+    <span class="acortador-brand-dot"></span>
+    acortador
+  </a>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

@@ -47,3 +47,332 @@
     box-shadow: 0 0 20px rgba(195, 244, 0, 0.3);
   }
 }
+
+/* ============================================================
+   Django Admin — Kinetic Dark overrides
+   Neutraliza el CSS por defecto de django.contrib.admin y aplica
+   el mismo lenguaje visual que el resto del proyecto.
+   ============================================================ */
+body.acortador-admin,
+body.login.acortador-admin,
+body.dashboard.acortador-admin {
+  background-color: #0d0d0d;
+  color: #e5e2e1;
+  font-family: "Geist", sans-serif;
+}
+
+body.acortador-admin #header {
+  background: #131313;
+  color: #e5e2e1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: none;
+  padding: 12px 24px;
+}
+
+body.acortador-admin #header a:link,
+body.acortador-admin #header a:visited {
+  color: #e5e2e1;
+  text-decoration: none;
+}
+
+.acortador-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: #e5e2e1;
+}
+
+.acortador-brand-dot {
+  width: 10px;
+  height: 10px;
+  background: #c3f400;
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(195, 244, 0, 0.5);
+}
+
+body.acortador-admin #user-tools {
+  color: #c4c9ac;
+}
+
+body.acortador-admin #user-tools a:link,
+body.acortador-admin #user-tools a:visited {
+  color: #c3f400;
+  text-decoration: none;
+}
+
+body.acortador-admin #user-tools a:hover {
+  color: #e5e2e1;
+}
+
+body.acortador-admin #user-tools form button {
+  background: transparent;
+  color: #c3f400;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+body.acortador-admin .breadcrumbs {
+  background: #0e0e0e;
+  color: #c4c9ac;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 10px 24px;
+}
+
+body.acortador-admin .breadcrumbs a {
+  color: #c3f400;
+  text-decoration: none;
+}
+
+body.acortador-admin #content {
+  padding: 24px;
+}
+
+body.acortador-admin #content h1,
+body.acortador-admin .module h2,
+body.acortador-admin .module caption {
+  color: #e5e2e1;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+body.acortador-admin .module {
+  background: #1c1b1b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  color: #e5e2e1;
+}
+
+body.acortador-admin .module table {
+  background: transparent;
+  color: #e5e2e1;
+  border-collapse: collapse;
+}
+
+body.acortador-admin .module table th {
+  background: #2a2a2a;
+  color: #c4c9ac;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+body.acortador-admin .module table td,
+body.acortador-admin .module table th {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px;
+}
+
+body.acortador-admin .module table tr:hover td {
+  background: rgba(195, 244, 0, 0.05);
+}
+
+body.acortador-admin a:link,
+body.acortador-admin a:visited {
+  color: #c3f400;
+  text-decoration: none;
+}
+
+body.acortador-admin a:hover {
+  color: #e5e2e1;
+}
+
+body.acortador-admin input[type="text"],
+body.acortador-admin input[type="password"],
+body.acortador-admin input[type="email"],
+body.acortador-admin input[type="url"],
+body.acortador-admin input[type="number"],
+body.acortador-admin textarea,
+body.acortador-admin select {
+  background: #262626;
+  color: #e5e2e1;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-family: "Geist", sans-serif;
+}
+
+body.acortador-admin input:focus,
+body.acortador-admin textarea:focus,
+body.acortador-admin select:focus {
+  border-color: #c3f400;
+  outline: 0;
+  box-shadow: 0 0 0 1px rgba(195, 244, 0, 0.3);
+}
+
+body.acortador-admin .button,
+body.acortador-admin input[type="submit"],
+body.acortador-admin input[type="button"],
+body.acortador-admin .submit-row input {
+  background: #c3f400;
+  color: #283500;
+  border: 0;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Geist", sans-serif;
+  text-transform: none;
+}
+
+body.acortador-admin .button:hover,
+body.acortador-admin input[type="submit"]:hover,
+body.acortador-admin input[type="button"]:hover {
+  background: #abd600;
+  color: #161e00;
+}
+
+body.acortador-admin .button.default,
+body.acortador-admin input[type="submit"].default {
+  background: #c3f400;
+  color: #283500;
+}
+
+body.acortador-admin .submit-row {
+  background: transparent;
+  border: 0;
+  padding: 16px 0;
+}
+
+body.acortador-admin .form-row {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 12px 0;
+}
+
+body.acortador-admin fieldset.module {
+  background: #1c1b1b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  margin: 0 0 16px;
+  padding: 16px;
+}
+
+body.acortador-admin fieldset.module h2 {
+  background: transparent;
+  color: #c4c9ac;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0 0 12px;
+}
+
+body.acortador-admin .help,
+body.acortador-admin p.help,
+body.acortador-admin .form-row .help {
+  color: #8e9379;
+}
+
+body.acortador-admin .errornote {
+  background: rgba(255, 69, 58, 0.1);
+  color: #ffb4ab;
+  border: 1px solid rgba(255, 69, 58, 0.3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 0 0 16px;
+}
+
+body.acortador-admin .messagelist li {
+  background: rgba(195, 244, 0, 0.08);
+  color: #e5e2e1;
+  border: 1px solid rgba(195, 244, 0, 0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 0 0 8px;
+}
+
+body.acortador-admin .messagelist li.error {
+  background: rgba(255, 69, 58, 0.1);
+  color: #ffb4ab;
+  border-color: rgba(255, 69, 58, 0.3);
+}
+
+body.acortador-admin #footer {
+  background: #0e0e0e;
+  color: #8e9379;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 16px 24px;
+}
+
+body.acortador-admin #footer a:link,
+body.acortador-admin #footer a:visited {
+  color: #c4c9ac;
+}
+
+body.acortador-admin .object-tools a:link,
+body.acortador-admin .object-tools a:visited {
+  background: #2a2a2a;
+  color: #c3f400;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 6px 12px;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+body.acortador-admin .acortador-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+body.acortador-admin #content-related {
+  background: #1c1b1b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 16px;
+  max-width: 320px;
+}
+
+/* Login screen */
+body.login.acortador-admin #header {
+  display: none;
+}
+
+body.login.acortador-admin #content {
+  padding: 0;
+}
+
+body.login.acortador-admin #login-form {
+  background: #1c1b1b;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 360px;
+  margin: 80px auto;
+}
+
+body.login.acortador-admin .form-row {
+  border: 0;
+  padding: 0;
+  margin: 0 0 16px;
+}
+
+body.login.acortador-admin label {
+  color: #c4c9ac;
+  display: block;
+  margin-bottom: 6px;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+body.login.acortador-admin .submit-row {
+  text-align: center;
+  padding: 16px 0 0;
+}
+
+body.login.acortador-admin input[type="submit"] {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 16px;
+}
