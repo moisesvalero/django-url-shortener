@@ -4,17 +4,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Acortador{% endblock %} · moisesvalero</title>
+  <title>{% block title %}acortador{% endblock %} · moisesvalero</title>
   <link rel="stylesheet" href="{% static 'output.css' %}">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/htmx.org@2.0.4"></script>
 </head>
-<body class="bg-[#0A0A0A] text-[#E5E5E5] font-sans antialiased min-h-screen flex flex-col">
+<body class="bg-background text-on-background font-sans antialiased selection:bg-primary-container selection:text-on-primary-container">
+
+  <nav class="bg-background fixed top-0 left-0 w-full z-50 h-16 border-b border-white/5">
+    <div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-full">
+      <a href="{% url 'home' %}" class="font-headline-md text-headline-md font-bold text-on-background tracking-tighter">acortador</a>
+      <div class="hidden md:flex items-center gap-stack-lg">
+        {% block nav_links %}{% endblock %}
+      </div>
+      <button class="md:hidden text-on-background" aria-label="Menú">
+        <span class="material-symbols-outlined">menu</span>
+      </button>
+    </div>
+  </nav>
+
   {% block content %}{% endblock %}
-  <footer class="mt-auto py-8 text-center text-[#555] text-sm border-t border-[#1A1A1A]">
-    <p>hecho por <a href="https://moisesvalero.es" class="text-[#C6FF00] hover:underline">moises valero</a></p>
+
+  <footer class="bg-surface-container-lowest border-t border-white/5">
+    <div class="w-full py-stack-lg px-gutter flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-stack-md">
+      <div class="flex flex-col items-center md:items-start gap-1">
+        <div class="font-label-md text-label-md text-on-background font-bold">acortador</div>
+        <p class="font-label-md text-label-md text-on-surface-variant opacity-60">© {% now "Y" %} moisesvalero. hecho con cariño.</p>
+      </div>
+      <div class="flex gap-gutter items-center">
+        <a class="text-on-surface-variant font-label-md text-label-md hover:text-on-background transition-colors opacity-80 hover:opacity-100" href="https://moisesvalero.es">portfolio</a>
+        <a class="text-on-surface-variant font-label-md text-label-md hover:text-on-background transition-colors opacity-80 hover:opacity-100" href="{% url 'health' %}">status</a>
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>
