@@ -116,7 +116,7 @@ JAZZMIN_SETTINGS = {
     "navigation_expanded": True,
     "hide_apps": [],
     "hide_models": [],
-    "language_chooser": True,
+    "language_chooser": False,
     "changeform_format": "horizontal_tabs",
     "icons": {
         "shortener.Link": "fas fa-link",
