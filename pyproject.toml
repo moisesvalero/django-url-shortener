@@ -1,7 +1,7 @@
 [project]
-name = "acortador"
-version = "0.1.0"
-description = "Acortador de enlaces estilo Bit.ly para moisesvalero.es"
+name = "django-url-shortener"
+version = "1.0.0"
+description = "Modern URL shortener built with Django 5.2, HTMX, Tailwind CSS — deployed on Vercel"
 requires-python = ">=3.11"
 dependencies = [
     "django>=5.0,<6.0",

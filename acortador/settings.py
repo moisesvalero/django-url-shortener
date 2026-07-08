@@ -17,12 +17,12 @@ DEBUG = os.environ.get("DJANGO_DEBUG", "True").lower() == "true"
 
 ALLOWED_HOSTS = os.environ.get(
     "ALLOWED_HOSTS",
-    "localhost,127.0.0.1,acortador.moisesvalero.es",
+    "localhost,127.0.0.1,acortador.moisesvalero.es,a.moisesvalero.es",
 ).split(",")
 
 CSRF_TRUSTED_ORIGINS = os.environ.get(
     "CSRF_TRUSTED_ORIGINS",
-    "http://localhost:8000,https://acortador.moisesvalero.es",
+    "http://localhost:8000,https://acortador.moisesvalero.es,https://a.moisesvalero.es",
 ).split(",")
 
 INSTALLED_APPS = [
@@ -103,9 +103,9 @@ IP_HASH_SALT = os.environ.get(
 BASE_URL = os.environ.get("BASE_URL", "http://localhost:8000")
 
 JAZZMIN_SETTINGS = {
-    "site_title": "acortador",
-    "site_header": "acortador",
-    "site_brand": "acortador",
+    "site_title": "URL Shortener",
+    "site_header": "URL Shortener",
+    "site_brand": "URL Shortener",
     "welcome_sign": "Panel de administración",
     "copyright": "moisesvalero",
     "search_model": ["shortener.Link", "shortener.Click"],
