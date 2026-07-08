@@ -14,7 +14,7 @@
     </p>
 
     <div class="relative group">
-      <form hx-post="{% url 'create' %}" hx-target="#result-card" hx-swap="innerHTML" hx-on::after-request="this.reset()" class="bg-surface-container-low border border-white/10 rounded-xl p-2 flex flex-col md:flex-row gap-2 transition-all duration-300 focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container/20">
+      <form hx-post="{% url 'create' %}" hx-target="#result-card" hx-swap="innerHTML" class="bg-surface-container-low border border-white/10 rounded-xl p-2 flex flex-col md:flex-row gap-2 transition-all duration-300 focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container/20">
         {% csrf_token %}
         <div class="flex-grow flex items-center px-4 gap-3">
           <span class="material-symbols-outlined text-on-surface-variant">link</span>

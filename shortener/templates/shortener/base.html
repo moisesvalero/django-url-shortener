@@ -10,7 +10,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+  <script src="https://unpkg.com/htmx.org@2.0.4" nonce="{{ request.csp_nonce }}"></script>
+  <script nonce="{{ request.csp_nonce }}">
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-copy-url]');
+      if (!btn) return;
+      var url = btn.getAttribute('data-copy-url');
+      var original = btn.innerHTML;
+      navigator.clipboard.writeText(url).then(function() {
+        btn.innerHTML = "\u00a1Copiado! <span class=\"material-symbols-outlined\">check</span>";
+        setTimeout(function() { btn.innerHTML = original; }, 2000);
+      })["catch"](function() {
+        btn.innerHTML = "Error <span class=\"material-symbols-outlined\">close</span>";
+      });
+    });
+    document.addEventListener('htmx:afterRequest', function(e) {
+      if (e.detail.target && e.detail.target.id === 'result-card') {
+        var form = e.detail.elt;
+        if (form && form.tagName === 'FORM') form.reset();
+      }
+    });
+  </script>
 </head>
 <body class="bg-background text-on-background font-sans antialiased selection:bg-primary-container selection:text-on-primary-container">
 

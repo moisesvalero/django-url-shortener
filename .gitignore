@@ -7,6 +7,7 @@ build/
 .env
 .env.local
 .venv/
+uv.lock
 staticfiles/
 node_modules/
 .DS_Store

@@ -8,8 +8,7 @@
       <span class="material-symbols-outlined text-sm text-on-surface-variant">visibility</span>
       <span class="font-label-sm text-label-sm text-on-surface-variant">{{ link.clicks_count }} clicks</span>
     </div>
-    <button onclick="navigator.clipboard.writeText(this.dataset.url);this.innerHTML='¡Copiado! <span class=\'material-symbols-outlined\'>check</span>';setTimeout(()=>this.innerHTML='Copiar <span class=\'material-symbols-outlined\'>content_copy</span>',2000)"
-            data-url="{{ BASE_URL }}/{{ link.short_code }}"
+    <button data-copy-url="{{ BASE_URL }}/{{ link.short_code }}"
             class="flex items-center gap-2 border border-white/10 hover:bg-white/5 px-5 py-2.5 rounded-lg font-label-md text-label-md transition-all active:scale-95 text-on-background">
       Copiar
       <span class="material-symbols-outlined">content_copy</span>
