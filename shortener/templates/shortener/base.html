@@ -226,50 +226,25 @@
       <div
         class="w-full px-8 max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-center gap-8"
       >
-        <!-- Left Section: Branding & Info -->
+        <!-- Left Section: Copyright & License Info -->
         <div
-          class="flex flex-col items-center md:items-start gap-2 text-center md:text-left"
+          class="flex flex-col items-center md:items-start gap-1.5 text-center md:text-left"
         >
-          <div class="flex items-center gap-3">
-            <span
-              class="font-headline-md text-xl font-black text-on-background tracking-tight"
-              >url-shortener</span
-            >
-            <span
-              class="px-2.5 py-0.5 text-[10px] uppercase font-bold tracking-wider rounded-lg bg-white/5 border border-white/10 text-on-surface-variant/80"
-              >MIT License</span
-            >
-          </div>
           <p
-            class="font-label-md text-label-md text-on-surface-variant opacity-60"
+            class="font-label-md text-label-md text-on-surface-variant opacity-80"
           >
-            © {% now "Y" %} moisesvalero. Diseñado con
-            <span class="text-[#ff3b30] animate-pulse mx-0.5">❤️</span> para
-            moisesvalero.es
+            © {% now "Y" %} moisesvalero. hecho con
+            <span class="text-[#ff3b30] animate-pulse mx-0.5">❤️</span> por
+            moisesvalero.
           </p>
+          <span
+            class="text-[10px] uppercase font-bold tracking-wider text-on-surface-variant/40"
+            >MIT License</span
+          >
         </div>
 
-        <!-- Right Section: Links & Support Action -->
-        <div class="flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
-          <!-- Navigation Links -->
-          <div
-            class="flex items-center gap-6 text-sm font-label-md text-on-surface-variant/70"
-          >
-            <a
-              href="https://moisesvalero.es"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:text-on-background transition-colors duration-200"
-              >portfolio</a
-            >
-            <a
-              href="{% url 'health' %}"
-              class="hover:text-on-background transition-colors duration-200"
-              >status</a
-            >
-          </div>
-
-          <!-- Support CTA Button -->
+        <!-- Right Section: Support Action Only -->
+        <div class="flex items-center">
           <a
             href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=moi6@outlook.com&currency_code=EUR"
             target="_blank"
@@ -277,7 +252,7 @@
             class="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-surface-tint/20 hover:border-surface-tint text-surface-tint bg-surface-tint/5 hover:bg-surface-tint/10 transition-all duration-300 text-sm font-bold hover:shadow-[0_0_20px_rgba(171,214,0,0.15)] hover:-translate-y-0.5"
           >
             <span class="material-symbols-outlined text-[18px]">favorite</span>
-            Apoyar Proyecto (PayPal)
+            Apoya al proyecto
           </a>
         </div>
       </div>
