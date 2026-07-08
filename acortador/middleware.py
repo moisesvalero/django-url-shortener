@@ -24,4 +24,10 @@ class ContentSecurityPolicyMiddleware:
         )
 
         response["Content-Security-Policy"] = csp
+
+        response["Permissions-Policy"] = (
+            "geolocation=(), microphone=(), camera=(), interest-cohort=()"
+        )
+
+        response["Cross-Origin-Embedder-Policy"] = "credentialless"
         return response

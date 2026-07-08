@@ -4,12 +4,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{% block description %}Acortador de URLs rápido y seguro. Crea enlaces cortos, rastrea clics y simplifica tu presencia digital.{% endblock %}">
+  <link rel="canonical" href="{% block canonical %}{{ request.build_absolute_uri }}{% endblock %}">
+  <link rel="alternate" hreflang="es" href="{% block hreflang_es %}{{ request.build_absolute_uri }}{% endblock %}">
+  <link rel="alternate" hreflang="x-default" href="{% block hreflang_xdefault %}{{ request.build_absolute_uri }}{% endblock %}">
+  <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+  <meta property="og:site_name" content="URL Shortener">
+  <meta property="og:title" content="{% block og_title %}URL Shortener · moisesvalero{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Acortador de URLs rápido y seguro. Crea enlaces cortos, rastrea clics y simplifica tu presencia digital.{% endblock %}">
+  <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
+  <meta property="og:image" content="{% block og_image %}{{ BASE_URL }}{% static 'og-image.svg' %}{% endblock %}">
+  <meta name="twitter:card" content="{% block twitter_card %}summary_large_image{% endblock %}">
+  <meta name="twitter:title" content="{% block twitter_title %}URL Shortener · moisesvalero{% endblock %}">
+  <meta name="twitter:description" content="{% block twitter_description %}Acortador de URLs rápido y seguro. Crea enlaces cortos, rastrea clics y simplifica tu presencia digital.{% endblock %}">
+  <meta name="twitter:image" content="{% block twitter_image %}{{ BASE_URL }}{% static 'og-image.svg' %}{% endblock %}">
+  <link rel="icon" type="image/svg+xml" href="{% static 'favicon.svg' %}">
   <title>{% block title %}URL Shortener{% endblock %} · moisesvalero</title>
+  {% block json_ld %}
+  <script type="application/ld+json" nonce="{{ request.csp_nonce }}">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "URL Shortener",
+    "url": "https://acortador.moisesvalero.es",
+    "description": "Acortador de URLs rápido y seguro. Crea enlaces cortos, rastrea clics y simplifica tu presencia digital.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "inLanguage": "es",
+    "author": {
+      "@type": "Person",
+      "name": "moisesvalero",
+      "url": "https://moisesvalero.es"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "potentialAction": {
+      "@type": "CreateAction",
+      "name": "Acortar URL"
+    }
+  }
+  </script>
+  {% endblock %}
   <link rel="stylesheet" href="{% static 'output.css' %}">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="preload" as="font" type="font/woff2" href="{% static 'fonts/geist-latin.woff2' %}" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="{% static 'fonts/geist-mono-latin.woff2' %}" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="{% static 'fonts/material-symbols.woff2' %}" crossorigin>
   <script src="https://unpkg.com/htmx.org@2.0.4" nonce="{{ request.csp_nonce }}"></script>
   <script nonce="{{ request.csp_nonce }}">
     document.addEventListener('click', function(e) {
