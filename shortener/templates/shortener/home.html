@@ -1,38 +1,65 @@
+<!-- prettier-ignore -->
 {% extends "shortener/base.html" %}
 
+<!-- prettier-ignore -->
 {% block title %}Acortar enlace{% endblock %}
 
 {% block content %}
 <main class="pt-32 pb-stack-lg min-h-screen flex flex-col items-center">
-
   <section class="w-full px-gutter max-w-[800px] mx-auto text-center mb-16">
-    <h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-stack-md text-on-background animate-fade-in">
-      Enlaces cortos, <span class="text-primary-container">impacto máximo</span>.
+    <h1
+      class="reveal font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-stack-md text-on-background"
+    >
+      Enlaces cortos, <span class="text-surface-tint">impacto máximo</span>.
     </h1>
-    <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
-      Simplifica tu presencia digital con la herramienta de acortamiento más rápida y precisa del mercado.
+    <p
+      class="reveal reveal-delay-1 font-body-lg text-body-lg text-on-surface-variant/80 mb-12 max-w-2xl mx-auto"
+    >
+      Simplifica tu presencia digital con la herramienta de acortamiento más
+      rápida y precisa del mercado.
     </p>
 
-    <div class="relative group">
-      <form hx-post="{% url 'create' %}" hx-target="#result-card" hx-swap="innerHTML" class="bg-surface-container-low border border-white/10 rounded-xl p-2 flex flex-col md:flex-row gap-2 transition-all duration-300 focus-within:border-primary-container focus-within:ring-1 focus-within:ring-primary-container/20">
+    <div class="reveal reveal-delay-2 relative group">
+      <form
+        hx-post="{% url 'create' %}"
+        hx-target="#result-card"
+        hx-swap="innerHTML"
+        class="bg-surface-container-low/40 backdrop-blur-md border border-white/10 rounded-2xl p-2 flex flex-col md:flex-row gap-2 transition-all duration-300 focus-within:border-surface-tint focus-within:ring-1 focus-within:ring-surface-tint/20"
+      >
         {% csrf_token %}
         <div class="flex-grow flex items-center px-4 gap-3">
-          <span class="material-symbols-outlined text-on-surface-variant">link</span>
-          <input type="url" name="url" placeholder="Pega tu enlace largo aquí..." required
-                 class="w-full bg-transparent border-none text-on-background font-body-md text-body-md placeholder:text-on-surface-variant/40 focus:ring-0 py-4 outline-none">
+          <span class="material-symbols-outlined text-on-surface-variant"
+            >link</span
+          >
+          <input
+            type="url"
+            name="url"
+            placeholder="Pega tu enlace largo aquí..."
+            required
+            class="w-full bg-transparent border-none text-on-background font-body-md text-body-md placeholder:text-on-surface-variant/40 focus:ring-0 py-4 outline-none"
+          />
         </div>
-        <button type="submit"
-                class="bg-primary-container text-on-primary-container px-8 py-4 rounded-lg font-headline-md text-headline-md font-extrabold flex items-center justify-center gap-2 primary-glow transition-all active:scale-[0.98]">
+        <button
+          type="submit"
+          class="bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-headline-md text-headline-md font-extrabold flex items-center justify-center gap-2 primary-glow transition-all active:scale-[0.98]"
+        >
           Acortar
           <span class="material-symbols-outlined">bolt</span>
         </button>
       </form>
-      <div class="absolute -inset-1 bg-gradient-to-r from-primary-container/20 to-transparent blur-2xl opacity-20 -z-10 rounded-xl group-focus-within:opacity-40 transition-opacity"></div>
+      <div
+        class="absolute -inset-1 bg-gradient-to-r from-surface-tint/10 to-transparent blur-2xl opacity-20 -z-10 rounded-xl group-focus-within:opacity-40 transition-opacity"
+      ></div>
     </div>
   </section>
 
-  <section class="w-full px-gutter max-w-[800px] mx-auto">
-    <p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-[0.2em] ml-2 mb-3">Resultado Reciente</p>
+  <section class="reveal w-full px-gutter max-w-[800px] mx-auto">
+    <p
+      class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-[0.2em] ml-2 mb-4 opacity-60"
+    >
+      Resultado Reciente
+    </p>
+    <!-- prettier-ignore -->
     <div id="result-card" class="space-y-4">
       {% if links %}
         {% for link in links %}
@@ -44,29 +71,68 @@
 
   <section class="w-full px-gutter max-w-container-max mx-auto mt-24">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-      <div class="p-stack-lg bg-surface-container-lowest/50 border border-white/5 rounded-xl text-center md:text-left">
-        <div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center mb-stack-md mx-auto md:mx-0">
-          <span class="material-symbols-outlined text-primary-container">speed</span>
+      <!-- Tarjeta 1: Velocidad -->
+      <div
+        class="reveal reveal-delay-1 p-stack-lg bg-surface-container-lowest/30 backdrop-blur-md border border-white/5 rounded-2xl text-center md:text-left hover:border-surface-tint/20 hover:bg-white/[0.01] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.3)] transition-all duration-300 group"
+      >
+        <div
+          class="w-12 h-12 bg-surface-tint/10 rounded-xl flex items-center justify-center mb-stack-md mx-auto md:mx-0 group-hover:bg-surface-tint/20 transition-colors duration-300"
+        >
+          <span
+            class="material-symbols-outlined text-surface-tint group-hover:scale-110 transition-transform duration-300"
+            >speed</span
+          >
         </div>
-        <h3 class="font-headline-md text-headline-md text-on-background mb-2">Velocidad</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Redirecciones instantáneas con una latencia inferior a los 50ms a nivel global.</p>
+        <h3 class="font-headline-md text-headline-md text-on-background mb-2">
+          Velocidad
+        </h3>
+        <p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+          Redirecciones instantáneas con una latencia inferior a los 50ms a
+          nivel global.
+        </p>
       </div>
-      <div class="p-stack-lg bg-surface-container-lowest/50 border border-white/5 rounded-xl text-center md:text-left">
-        <div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center mb-stack-md mx-auto md:mx-0">
-          <span class="material-symbols-outlined text-primary-container">analytics</span>
+
+      <!-- Tarjeta 2: Análisis -->
+      <div
+        class="reveal reveal-delay-2 p-stack-lg bg-surface-container-lowest/30 backdrop-blur-md border border-white/5 rounded-2xl text-center md:text-left hover:border-surface-tint/20 hover:bg-white/[0.01] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.3)] transition-all duration-300 group"
+      >
+        <div
+          class="w-12 h-12 bg-surface-tint/10 rounded-xl flex items-center justify-center mb-stack-md mx-auto md:mx-0 group-hover:bg-surface-tint/20 transition-colors duration-300"
+        >
+          <span
+            class="material-symbols-outlined text-surface-tint group-hover:scale-110 transition-transform duration-300"
+            >analytics</span
+          >
         </div>
-        <h3 class="font-headline-md text-headline-md text-on-background mb-2">Análisis</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Rastrea cada click con estadísticas detalladas de geolocalización y dispositivos.</p>
+        <h3 class="font-headline-md text-headline-md text-on-background mb-2">
+          Análisis
+        </h3>
+        <p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+          Rastrea cada click con estadísticas detalladas de geolocalización y
+          dispositivos.
+        </p>
       </div>
-      <div class="p-stack-lg bg-surface-container-lowest/50 border border-white/5 rounded-xl text-center md:text-left">
-        <div class="w-12 h-12 bg-primary-container/10 rounded-full flex items-center justify-center mb-stack-md mx-auto md:mx-0">
-          <span class="material-symbols-outlined text-primary-container">security</span>
+
+      <!-- Tarjeta 3: Seguridad -->
+      <div
+        class="reveal reveal-delay-3 p-stack-lg bg-surface-container-lowest/30 backdrop-blur-md border border-white/5 rounded-2xl text-center md:text-left hover:border-surface-tint/20 hover:bg-white/[0.01] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgb(0,0,0,0.3)] transition-all duration-300 group"
+      >
+        <div
+          class="w-12 h-12 bg-surface-tint/10 rounded-xl flex items-center justify-center mb-stack-md mx-auto md:mx-0 group-hover:bg-surface-tint/20 transition-colors duration-300"
+        >
+          <span
+            class="material-symbols-outlined text-surface-tint group-hover:scale-110 transition-transform duration-300"
+            >security</span
+          >
         </div>
-        <h3 class="font-headline-md text-headline-md text-on-background mb-2">Seguridad</h3>
-        <p class="font-body-md text-body-md text-on-surface-variant">Escaneo automático de enlaces maliciosos para proteger a tu audiencia.</p>
+        <h3 class="font-headline-md text-headline-md text-on-background mb-2">
+          Seguridad
+        </h3>
+        <p class="font-body-md text-body-md text-on-surface-variant opacity-80">
+          Escaneo automático de enlaces maliciosos para proteger a tu audiencia.
+        </p>
       </div>
     </div>
   </section>
-
 </main>
 {% endblock %}
