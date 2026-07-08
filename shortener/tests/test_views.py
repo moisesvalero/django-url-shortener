@@ -70,6 +70,20 @@ class CreateViewTests(TestCase):
         response = self.client.post(reverse("create"), {})
         self.assertEqual(response.status_code, 400)
 
+    def test_create_invalid_url_structure(self):
+        response = self.client.post(
+            reverse("create"),
+            {"url": "https://"},
+        )
+        self.assertEqual(response.status_code, 400)
+
+    def test_create_invalid_characters_in_url(self):
+        response = self.client.post(
+            reverse("create"),
+            {"url": "https://invalid_url_with_spaces or_chars"},
+        )
+        self.assertEqual(response.status_code, 400)
+
 
 class RedirectViewTests(TestCase):
     def setUp(self):
@@ -109,6 +123,32 @@ class RedirectViewTests(TestCase):
         self.client.get("/nonexistent")
         self.link.refresh_from_db()
         self.assertEqual(self.link.clicks_count, 0)
+
+
+class CacheRedirectViewTests(TestCase):
+    def setUp(self):
+        from django.core.cache import cache
+
+        self.client = Client()
+        cache.clear()
+        self.link = Link.objects.create(
+            original_url="https://example.com/cache-test",
+            short_code="cache1",
+        )
+
+    def test_redirect_uses_cache(self):
+        # Primera petición puebla la caché
+        response = self.client.get(f"/{self.link.short_code}")
+        self.assertEqual(response.status_code, 302)
+
+        # Modificamos directamente en base de datos para simular desincronización
+        self.link.original_url = "https://example.com/modified-in-db"
+        self.link.save()
+
+        # Al consultar de nuevo, debería usar el valor cacheado
+        response = self.client.get(f"/{self.link.short_code}")
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, "https://example.com/cache-test")
 
 
 class HealthViewTests(TestCase):
