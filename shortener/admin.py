@@ -33,5 +33,7 @@ class LinkAdmin(admin.ModelAdmin):
     def get_actions(self, request):
         actions = super().get_actions(request)
         if "delete_selected" in actions:
-            actions["delete_selected"].short_description = "Eliminar enlaces seleccionados"
+            actions[
+                "delete_selected"
+            ].short_description = "Eliminar enlaces seleccionados"
         return actions

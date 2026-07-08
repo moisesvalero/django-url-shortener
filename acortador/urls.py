@@ -3,9 +3,9 @@ from django.http import HttpResponse
 from django.urls import include, path
 
 security_txt = (
-    'Contact: https://moisesvalero.es/contact\n'
-    'Preferred-Languages: es, en\n'
-    'Canonical: https://acortador.moisesvalero.es/.well-known/security.txt\n'
+    "Contact: https://moisesvalero.es/contact\n"
+    "Preferred-Languages: es, en\n"
+    "Canonical: https://acortador.moisesvalero.es/.well-known/security.txt\n"
 )
 
 urlpatterns = [

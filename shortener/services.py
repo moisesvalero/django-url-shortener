@@ -26,12 +26,12 @@ def generate_short_code(link_id: int) -> str:
     return encoded.rjust(CODE_LENGTH, BASE62[0])
 
 
-def get_cached_link(code: str) -> str | None:
+def get_cached_link(code: str) -> tuple[int, str] | None:
     return cache.get(f"link:{code}")
 
 
-def set_cached_link(code: str, url: str) -> None:
-    cache.set(f"link:{code}", url, CACHE_TIMEOUT)
+def set_cached_link(code: str, link_id: int, url: str) -> None:
+    cache.set(f"link:{code}", (link_id, url), CACHE_TIMEOUT)
 
 
 def invalidate_link_cache(code: str) -> None:
@@ -43,10 +43,25 @@ def hash_ip(ip: str) -> str:
     return hashlib.sha256(f"{ip}{salt}".encode()).hexdigest()
 
 
+def get_client_ip(request) -> str:
+    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(",")[0].strip()
+    else:
+        ip = request.META.get("REMOTE_ADDR", "")
+    return ip
+
+
 def is_rate_limited(ip_hashed: str) -> bool:
     cache_key = f"rl:{ip_hashed}"
-    count = cache.get(cache_key, 0)
-    if count >= RATE_LIMIT_MAX:
-        return True
-    cache.set(cache_key, count + 1, RATE_LIMIT_WINDOW)
-    return False
+    added = cache.add(cache_key, 1, RATE_LIMIT_WINDOW)
+    if not added:
+        try:
+            count = cache.incr(cache_key)
+        except ValueError:
+            # Fallback en caso de que expire justo entre add e incr
+            cache.set(cache_key, 1, RATE_LIMIT_WINDOW)
+            count = 1
+    else:
+        count = 1
+    return count > RATE_LIMIT_MAX
